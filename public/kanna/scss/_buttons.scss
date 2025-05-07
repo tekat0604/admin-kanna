@@ -1,0 +1,217 @@
+.btn-circle {
+  border-radius: 100%;
+  height: 2.5rem;
+  width: 2.5rem;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  &.btn-sm {
+    height: 1.8rem;
+    width: 1.8rem;
+    font-size: 0.75rem;
+  }
+  &.btn-lg {
+    height: 3.5rem;
+    width: 3.5rem;
+    font-size: 1.35rem;
+  }
+}
+
+.btn-icon-split {
+  padding: 0;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: stretch;
+  justify-content: center;
+  .icon {
+    background: fade-out($black, .85);
+    display: inline-block;
+    padding: $btn-padding-y $btn-padding-x;
+  }
+  .text {
+    display: inline-block;
+    padding: $btn-padding-y $btn-padding-x;
+  }
+  &.btn-sm {
+    .icon {
+      padding: $btn-padding-y-sm $btn-padding-x-sm;
+    }
+    .text {
+      padding: $btn-padding-y-sm $btn-padding-x-sm;
+    }
+  }
+  &.btn-lg {
+    .icon {
+      padding: $btn-padding-y-lg $btn-padding-x-lg;
+    }
+    .text {
+      padding: $btn-padding-y-lg $btn-padding-x-lg;
+    }
+  }
+}
+.fileUpload {
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+}
+.fileUpload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+
+//menu bottom
+
+/* -- Mobile Menu -- */
+.menubottom{
+  display:none
+}
+.active{
+fill:$orange !important;
+}
+@media screen and (max-width:800px){
+#footer-wrapper{
+    bottom:15px
+}
+.menubottom{
+    position:relative/*fixed*/;
+    right:0;
+    left:0;
+    z-index:5;/*add*/
+    bottom:0
+}
+.menubottom nav ul{
+    display:flex!important;
+    width:100%!important;
+    padding-left:0;
+    justify-content:space-between!important;
+    margin-bottom:0;
+    flex-direction:row!important;
+    list-style:none
+}
+.menubottom nav ul li{
+    width:100%!important;
+    list-style:none;
+}
+.menubottom nav ul li a{
+    display:block;
+    text-decoration:none;
+    padding:.5rem;
+}
+.menubottom nav ul li a svg{
+    width:25px;height:25px;
+}
+.menubottom nav ul li a span{
+    position:relative;
+    display:block;
+    font-size:10px;
+}
+.menubottom nav ul li a:hover{
+    background:#373358;
+    color:#fff;
+    border-radius:5px
+}
+#openShare{
+    display:block
+}
+#closeShare{
+    display:none
+}
+#jpthemeFooter{
+    padding-bottom:55px;
+    position:relative;
+}
+}
+@media screen and (max-width:768px){
+.menubottom{
+    left:0;
+    text-align:center;
+    width:100%;/*chn.web.id*/
+    position:fixed;
+    display:block
+}
+.menubottom nav{
+    display:block!important;
+    position:relative;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+}
+.menubottom ul li{
+    float:left;
+    width:100px;
+    height:100%;
+    transition:background-color 0.2s linear 0s;
+    transition:all .5s linear;
+    background-position:center;display:block
+}
+.float_wrapper_menubottom{
+    position:fixed;
+    left:0;
+    bottom:0;
+    right:0;
+    transition:all .3s ease-out;
+    -webkit-transform:translateZ(0);
+    transform:translateZ(0);
+}
+.floatscroll{
+    bottom:0
+}
+.floatno-scroll{
+    bottom:-55px;
+}
+.jpthemeMenu .menu-toggle{
+    display:none
+}
+.jpthemeMenu .back-toggle{
+    display:block!important}
+}
+.jpthemeMenu .back-toggle{display:none}
+
+.fill{
+  fill: $gray-600;
+}
+.fill-dark{
+  fill: $white;
+}
+.create-button{
+  width: 60px !important;
+  height: 60px !important;
+  background: $orange;
+  padding: 25px;
+  border-radius: 20px;
+  margin-top: -20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: $white !important;
+  font-weight: 900 !important;
+}
+.tambah-button2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  height: 70px;
+  width: 70px;
+  border:none;
+}
+.tambah-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  height: 55px;
+  width: 55px;
+  border:none;
+}

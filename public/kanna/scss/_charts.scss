@@ -1,0 +1,83 @@
+// Area Chart
+.chart-area {
+  position: relative;
+  height: 10rem;
+  width: 100%;
+  @include media-breakpoint-up(md) {
+    height: 20rem;
+  }
+}
+
+// Bar Chart
+.chart-bar {
+  position: relative;
+  height: 10rem;
+  width: 100%;
+  @include media-breakpoint-up(md) {
+    height: 20rem;
+  }
+}
+
+// Pie Chart
+.chart-pie {
+  position: relative;
+  height: 100%;
+}
+//grafik Chart
+.grafik-area{
+  position: relative;
+  height: 10rem;
+  width: 100%;
+  @include media-breakpoint-up(md) {
+    height: calc(15rem - 43px) !important;
+  }
+}
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+}
+.dot--1{
+  background: #e83e8c;
+}
+.dot--2{
+  background: #fd7e14;
+}
+.dot--blue {
+  background: #00b5e9;
+}
+
+.dot--green {
+  background: #00ad5f;
+}
+
+.dot--red {
+  background: #fa4251;
+}
+.header-chart{
+  @media (max-width: 768px) {
+    padding-top: 2rem;
+    text-align: center;
+  }
+}
+.text-chart{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  h1{
+    font-size: 3rem;
+  }
+}
+.bg-1 {
+  background: $orange;
+}
+.bg-2 {
+  background: $pink;
+}
+.bg-3 {
+  background: $success;
+}

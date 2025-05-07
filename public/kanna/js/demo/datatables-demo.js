@@ -1,0 +1,9 @@
+$(document).ready(function() {
+  $('#tablelayanan').DataTable( {
+      "paging":   true,
+      "ordering": true,
+      "info":     false,
+      "filter":   true,
+      "pageLength": 50
+  } );
+} );

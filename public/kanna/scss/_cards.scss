@@ -1,0 +1,176 @@
+// Custom Card Styling
+
+.card {
+  .card-header {
+    // Format Dropdowns in Card Headings
+    .dropdown {
+      line-height: 1;
+      .dropdown-menu {
+        line-height: 1.5;
+      }
+    }
+  }
+  // Collapsable Card Styling
+  .card-header[data-toggle="collapse"] {
+    text-decoration: none;
+    position: relative;
+    padding: 0.75rem 3.25rem 0.75rem 0rem;
+    &::after {
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding-right: 1rem;
+      line-height: 51px;
+      font-weight: 900;
+      content: '\f107';
+      font-family: 'Font Awesome 5 Free';
+      font-size: 1.2rem;
+      color: $kanna;
+    }
+    &.collapsed {
+      border-radius: $card-border-radius;
+      &::after {
+        content: '\f105';
+      }
+    }
+  }
+  .icon-header{
+    display: flex;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    margin-left: -30px;
+    margin-top: -25px;
+    border: 5px solid $gray-300;
+    color: $gray-100;
+  }
+  .icon-header-dark{
+    border: 5px solid $dark-1;
+  }
+  .icon-samping{
+    display: flex;
+    height: 55px;
+    width: 55px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    margin-left: -40px;
+    margin-bottom: -20px;
+    border: 5px solid #f3f3f3;
+    color: #f3f3f3;
+  }
+  .icon-samping-dark{
+    border: 5px solid $dark-1;
+  }
+}
+.card-icon{
+  display: flex;
+  height: 50px;
+  width: 50px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  color:$white;
+  border: none;
+}
+
+.job-list-light{
+  padding:5px 0;
+  border-bottom:1px solid $gray-500;
+  a{
+    h6, p{
+      color: $gray-600;
+    }
+    &:hover{
+      text-decoration: none !important;
+      color: $orange;
+    }
+  }
+  &:last-child{
+    border: none;
+  }
+}
+
+.job-list-dark{
+  padding:5px 0;
+  border-bottom:1px solid fade-out($white, 0.85);
+  a{
+    h6, p{
+      color: $gray-100;
+    }
+    &:hover{
+      text-decoration: none !important;
+      h6{
+        color: $orange;
+      }
+    }
+  }
+  &:last-child{
+    border: none;
+  }
+}
+.hr{
+  padding-bottom:0.2em;
+  margin-bottom: 0.2em;
+  border-bottom:1px solid $gray-200;
+}
+
+.hr-dark{
+  padding-bottom:0.2em;
+  margin-bottom: 0.2em;
+  border-bottom:1px solid fade-out($white, 0.85);
+}
+.box-angka{
+  border-radius: 15px;
+  padding: 10px;
+  .box-kecil{
+    min-width: 70px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+  }
+  .line-right{
+    border-right:2px solid $white;
+    &:last-child{
+      border: none;
+    }
+  }
+}
+.produk{
+  padding: 3rem 3rem 3rem 3rem;
+}
+.login-card{
+  background: $white;
+  color:$gray-900;
+  .input-group .form-login {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+    margin-bottom: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius:0;
+  }
+  .form-login{
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6e707e;
+    background-color: #fff !important;
+    background-clip: padding-box;
+    border: 1px solid #d1d3e2;
+    border-radius: .75rem;
+    transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+  }
+}
+.icon-kategori{
+  i{
+    font-size: 35px;
+  }
+}
