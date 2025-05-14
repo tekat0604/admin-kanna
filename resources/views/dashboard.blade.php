@@ -2,6 +2,10 @@
 @section('content')
 @include('part.header')
 <div class="container-fluid">
+@php
+    $total_masuk  = $grandMasuk-$grandKeluar;
+    $total_bersih = $grandBersih-$grandKeluar;
+@endphp
     <!-- Content Row -->
     <div class="row animate__animated animate__bounceInLeft">
         <div class="col-lg-4 mb-4">
@@ -59,36 +63,122 @@
         </div> 
         <div  class="col-xl-5 col-md-6 mb-4">
             <div class="card bg-gray-100 h-100 py-2">
-                <div class="card-body pt-4 pb-2 px-5">
+                <div class="card-body pt-3 pb-1 px-5">
                     @foreach ($produk as $pr)
-                    <div class="row no-gutters align-items-center mb-2 pb-2 job job-list-light">
-                        <div class="col-md-10 rata-kiri">
-                            @if ($pr->id == 1)
-                                <i class="fas fa-circle mr-2 text-warning" style="font-size: 15px"></i>
-                            @elseif ($pr->id == 3)
-                                <i class="fas fa-circle mr-2 text-danger" style="font-size: 15px"></i>
-                            @elseif ($pr->id == 4)
-                                <i class="fas fa-circle mr-2 text-info" style="font-size: 15px"></i>
-                            @elseif ($pr->id == 6)
-                                <i class="fas fa-circle mr-2 text-success" style="font-size: 15px"></i>
-                            @elseif ($pr->id == 7)
-                                <i class="fas fa-circle mr-2 text-kanna" style="font-size: 15px"></i>
-                            @elseif ($pr->id == 2)
-                                <i class="fas fa-circle mr-2 text-gray-800" style="font-size: 15px"></i>
-                            @elseif ($pr->id == 8)
-                                <i class="fas fa-circle mr-2 text-purple" style="font-size: 15px"></i>
-                            @else
-                                <i class="fas fa-circle mr-2"></i>
-                            @endif
-                            <div class="text-xs">
-                                {{ $pr->produk }}
+                    <div class="row no-gutters align-items-center mb-3">
+                        @if ($pr->id == 1)
+                            <div class="col-md-10 rata-kiri">
+                                <div class="px-3 box-angka bg-warning w-100 rata-kiri" style="color:#333 !important">
+                                    <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
+                                    <div class="text-xs">
+                                        {{ $pr->nama }}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-2 rata-kanan">
-                            <h5 class="m-0 font-weight-bold">
-                                30
-                            </h5>
-                        </div>
+                            <div class="col-md-2 rata-kanan">
+                                <h4 class="m-0 font-weight-bold">
+                                    {{ $j_bengkel }}
+                                </h4>
+                            </div>
+                        @elseif ($pr->id == 2)
+                            <div class="col-md-10 rata-kiri">
+                                <div class="px-3 box-angka bg-kanna text-white w-100 rata-kiri">
+                                    <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
+                                    <div class="text-xs">
+                                        {{ $pr->nama }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 rata-kanan">
+                                <h4 class="m-0 font-weight-bold">
+                                    {{ $j_bengkel2 }}
+                                </h4>
+                            </div>
+                        @elseif ($pr->id == 3)
+                            <div class="col-md-10 rata-kiri">
+                                <div class="px-3 box-angka bg-danger text-white w-100 rata-kiri">
+                                    <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
+                                    <div class="text-xs">
+                                        {{ $pr->nama }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 rata-kanan">
+                                <h4 class="m-0 font-weight-bold">
+                                    {{ $j_ramen }}
+                                </h4>
+                            </div>
+                        @elseif ($pr->id == 4)
+                            <div class="col-md-10 rata-kiri">
+                                <div class="px-3 box-angka bg-info text-white w-100 rata-kiri">
+                                    <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
+                                    <div class="text-xs">
+                                        {{ $pr->nama }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 rata-kanan">
+                                <h4 class="m-0 font-weight-bold">
+                                    {{ $j_lawson }}
+                                </h4>
+                            </div>                             
+                        @elseif ($pr->id == 5)
+                            <div class="col-md-10 rata-kiri">
+                                <div class="px-3 box-angka bg-success text-white w-100 rata-kiri">
+                                    <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
+                                    <div class="text-xs">
+                                        {{ $pr->nama }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 rata-kanan">
+                                <h4 class="m-0 font-weight-bold">
+                                    {{ $j_eleven }}
+                                </h4>
+                            </div>                                                         
+                        @elseif ($pr->id == 6)
+                            <div class="col-md-10 rata-kiri">
+                                <div class="px-3 box-angka bg-gray-800 text-white w-100 rata-kiri">
+                                    <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
+                                    <div class="text-xs">
+                                        {{ $pr->nama }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 rata-kanan">
+                                <h4 class="m-0 font-weight-bold">
+                                    {{ $j_parkir }}
+                                </h4>
+                            </div>                             
+                        @elseif ($pr->id == 7)
+                            <div class="col-md-10 rata-kiri">
+                                <div class="px-3 box-angka bg-white text-dark w-100 rata-kiri">
+                                    <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
+                                    <div class="text-xs">
+                                        {{ $pr->nama }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 rata-kanan">
+                                <h4 class="m-0 font-weight-bold">
+                                    {{ $j_jalan }}
+                                </h4>
+                            </div>                              
+                        @else
+                            <div class="col-md-10 rata-kiri">
+                                <div class="px-3 box-angka bg-white text-dark w-100 rata-kiri">
+                                    <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
+                                    <div class="text-xs">
+                                        {{ $pr->nama }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 rata-kanan">
+                                <h4 class="m-0 font-weight-bold">
+                                    30
+                                </h4>
+                            </div>                    
+                        @endif      
                     </div>
                     @endforeach   
                 </div>
@@ -102,8 +192,9 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs mb-1">
-                                        Order Perlu Dikirim</div>
-                                    <div class="h5 mb-0 font-weight-bold ">{{ $j_order }}</div>
+                                        Pesanan Perlu Dikirim
+                                    </div>
+                                    <h4 class="mb-0 font-weight-bold ">{{ $j_order }}</h4>
                                 </div>
                                 <div class="col-auto">
                                     <div class="card-icon bg-orange">
@@ -123,7 +214,7 @@
                                     </div>
                                     <div class="row no-gutters align-items-center">
                                         @php
-                                            $persen=number_format(($grandBersih/$grandTotal)*100, 0, ',', '');
+                                            $persen=number_format(($total_bersih/$grandTotal)*100, 0, ',', '');
                                         @endphp
                                         <div class="col-auto">
                                             <div class="h5 mb-0 mr-3 font-weight-bold ">{{ $persen }}%</div>
@@ -147,43 +238,85 @@
                     </div>
                 </div>    
                 <div class="col-lg-12">
-                    <div class="card bg-gray-100 h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-md-4 rata-kiri ">
-                                    <div class="card-icon bg-success mr-2">
-                                        <i class="fas fa-dollar fa-2x"></i>
-                                    </div>
-                                    <div class="ml-3">
-                                        <p class="text-xs m-0">Keuntungan</p>
-                                        <h5 class="m-0 font-weight-bold">{{ \Carbon\Carbon::now()->translatedFormat('F Y') }}</h5>
+                    <div class="card bg-gray-100" style="height:275px">
+                        <div class="card-body rata-tengah">
+                            <div class="row no-gutters align-items-center w-100">
+                                <div class="col-lg-2 rata-tengah">
+                                    <div>
+                                        <div class="rata-tengah">
+                                            <div class="card-icon bg-success rata-tengah">
+                                                <i class="fas fa-dollar fa-2x"></i>
+                                            </div>
+                                        </div>
+                                        <div class="mt-2">
+                                            <p class="text-xs m-0">Keuntungan</p>
+                                            <h5 class="m-0 font-weight-bold">{{ \Carbon\Carbon::now()->translatedFormat('F Y') }}</h5>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-8 rata-kanan text-right">
-                                    <div class="px-3" style="border-right: 1px solid #555;">
-                                        <div class="text-xs mb-1">
-                                            Kotor
+                                <div class="col-lg-5 text-right" style="border-right: 1px solid #555;">
+                                    <div class="px-4 mb-3">
+                                        <div class="pb-3" style="border-bottom: 1px solid #555;">
+                                            <div class="text-xs mb-1">
+                                                Untung Kotor
+                                            </div>
+                                            <h5 class="m-0 font-weight-bold">
+                                                Rp. {{ number_format($grandTotal, 0, ',', '.') }}
+                                            </h5>
                                         </div>
-                                        <h5 class="m-0 font-weight-bold">
-                                            Rp. {{ number_format($grandTotal, 0, ',', '.') }}
-                                        </h5>
                                     </div>
-                                    <div class="px-3">
-                                        <div class="text-xs mb-1">
-                                            Bersih
+                                    <div class="px-4 mb-3">
+                                        <div class="pb-3" style="border-bottom: 1px solid #555;">
+                                            <div class="text-xs mb-1">
+                                                Pot. Shopee
+                                            </div>
+                                            <h5 class="m-0 font-weight-bold">
+                                                Rp. {{ number_format($grandPotongan, 0, ',', '.') }}
+                                            </h5>
                                         </div>
-                                        <h5 class="m-0 font-weight-bold">
-                                            Rp.{{ number_format($grandBersih, 0, ',', '.') }}
-                                        </h5>
                                     </div>
-                                    {{-- <div class="px-3" style="border-right: 1px solid #555;">
-                                        <div class="text-xs mb-1">
-                                            Kulakan
+                                    <div class="px-4">
+                                        <div>
+                                            <div class="text-xs mb-1">
+                                                Kulakan
+                                            </div>
+                                            <h5 class="m-0 font-weight-bold">
+                                                Rp. {{ number_format($grandKeluar, 0, ',', '.') }}
+                                            </h5>
                                         </div>
-                                        <h5 class="m-0 font-weight-bold">
-                                            Rp. {{ number_format($grandKeluar, 0, ',', '.') }}
-                                        </h5>
-                                    </div> --}}
+                                    </div>    
+                                </div>
+                                <div class="col-lg-5 text-right">
+                                    <div class="">
+                                        <div class="px-4 mb-3">
+                                            <div class="pb-3" style="border-bottom: 1px solid #555;">
+                                                <div class="text-xs mb-1">
+                                                    Uang Masuk <b>Kotor</b>
+                                                </div>
+                                                <h5 class="m-0 font-weight-bold">
+                                                    Rp. {{ number_format($grandMasuk, 0, ',', '.') }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div class="px-4 mb-3">
+                                            <div>
+                                                <div class="text-xs mb-1">
+                                                    Uang Masuk <b>Bersih</b>
+                                                </div>
+                                                <h5 class="m-0 font-weight-bold">
+                                                    Rp. {{ number_format($total_masuk, 0, ',', '.') }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div class="px-4 rata-kanan">
+                                            <div class="px-3 box-angka bg-success text-white shadow-dark text-right">
+                                                <div class="text-center ">
+                                                    <p class="m-0">Untung Bersih</p>
+                                                    <h4 class="m-0 font-weight-bold">Rp.{{ number_format($total_bersih, 0, ',', '.') }}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
