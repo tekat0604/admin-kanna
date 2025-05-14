@@ -14,7 +14,7 @@ class MainController extends Controller
         $bulan_ini = date('m');
         $tahun_ini = date('Y');
 
-        $order_baru    = order::where('status','Perlu Dikirim')->orderBy('tgl_deadline')->get();
+        $order_baru    = order::where('status','Perlu Dikirim')->orderBy('tgl_pesan')->get();
         $groupedOrders = $order_baru->groupBy('no_pesan');
         $j_order       = order::where('status','Perlu Dikirim')->get()->unique('no_pesan')->count();
         $j_produk      = order::where('status','Perlu Dikirim')->get()->count();
