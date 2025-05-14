@@ -31,9 +31,9 @@ class OrderController extends Controller
         $orders          = (clone $filteredQuery)->orderBy('tgl_pesan','DESC')->get();
         $groupedOrders   = $orders->groupBy('no_pesan');
         $selesais        = (clone $filteredQuery)->where('status', 'Selesai')->get();
-        $jml_perlukirims = (clone $filteredQuery)->where('status', 'Perlu Dikirim')->count();
-        $jml_dikirims    = (clone $filteredQuery)->where('status', 'Dikirim')->count();
-        $jml_selesais    = (clone $filteredQuery)->where('status', 'Selesai')->count();
+        $jml_perlukirims = (clone $filteredQuery)->where('status', 'Perlu Dikirim')->get()->unique('no_pesan')->count();
+        $jml_dikirims    = (clone $filteredQuery)->where('status', 'Dikirim')->get()->unique('no_pesan')->count();
+        $jml_selesais    = (clone $filteredQuery)->where('status', 'Selesai')->get()->unique('no_pesan')->count();
         $pengeluaran     = Pengeluaran::where('status','sudah ambil')->whereMonth('tgl_keluar', $bulan)
                            ->whereYear('tgl_keluar', $tahun)
                            ->get();

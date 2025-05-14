@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\order;
+use App\Models\produk;
 
 class MainController extends Controller
 {
@@ -14,7 +15,8 @@ class MainController extends Controller
 
         $order_baru    = order::where('status','Perlu Dikirim')->orderBy('tgl_deadline')->get();
         $groupedOrders = $order_baru->groupBy('no_pesan');
-        $j_order       = order::where('status','Perlu Dikirim')->count();
+        $j_order       = order::where('status','Perlu Dikirim')->get()->unique('no_pesan')->count();
+        $produk        = produk::orderBy('produk')->get();
         $orders        = order::whereMonth('tgl_pesan', $bulan_ini)
                          ->whereYear('tgl_pesan', $tahun_ini)
                          ->get();
@@ -36,6 +38,7 @@ class MainController extends Controller
             'groupedOrders'   => $groupedOrders,
             'order_baru'      => $order_baru,
             'j_order'         => $j_order,
+            'produk'          => $produk,
             'title'           => 'Dashboard',
             'grandTotal'      => $grandTotal,
             'grandBersih'     => $grandBersih,
