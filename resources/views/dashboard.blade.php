@@ -68,7 +68,7 @@
                     <div class="row no-gutters align-items-center mb-3">
                         @if ($pr->id == 1)
                             <div class="col-md-10 rata-kiri">
-                                <div class="px-3 box-angka bg-warning w-100 rata-kiri" style="color:#333 !important">
+                                <div class="px-3 box-angka bg-warning w-100 rata-kiri garis-belakang" style="color:#333 !important">
                                     <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
                                     <div class="text-xs">
                                         {{ $pr->nama }}
@@ -82,7 +82,7 @@
                             </div>
                         @elseif ($pr->id == 2)
                             <div class="col-md-10 rata-kiri">
-                                <div class="px-3 box-angka bg-kanna text-white w-100 rata-kiri">
+                                <div class="px-3 box-angka bg-kanna text-white w-100 rata-kiri garis-belakang">
                                     <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
                                     <div class="text-xs">
                                         {{ $pr->nama }}
@@ -96,7 +96,7 @@
                             </div>
                         @elseif ($pr->id == 3)
                             <div class="col-md-10 rata-kiri">
-                                <div class="px-3 box-angka bg-danger text-white w-100 rata-kiri">
+                                <div class="px-3 box-angka bg-danger text-white w-100 rata-kiri garis-belakang">
                                     <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
                                     <div class="text-xs">
                                         {{ $pr->nama }}
@@ -110,7 +110,7 @@
                             </div>
                         @elseif ($pr->id == 4)
                             <div class="col-md-10 rata-kiri">
-                                <div class="px-3 box-angka bg-info text-white w-100 rata-kiri">
+                                <div class="px-3 box-angka bg-info text-white w-100 rata-kiri garis-belakang">
                                     <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
                                     <div class="text-xs">
                                         {{ $pr->nama }}
@@ -124,7 +124,7 @@
                             </div>                             
                         @elseif ($pr->id == 5)
                             <div class="col-md-10 rata-kiri">
-                                <div class="px-3 box-angka bg-success text-white w-100 rata-kiri">
+                                <div class="px-3 box-angka bg-success text-white w-100 rata-kiri garis-belakang">
                                     <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
                                     <div class="text-xs">
                                         {{ $pr->nama }}
@@ -138,7 +138,7 @@
                             </div>                                                         
                         @elseif ($pr->id == 6)
                             <div class="col-md-10 rata-kiri">
-                                <div class="px-3 box-angka bg-gray-800 text-white w-100 rata-kiri">
+                                <div class="px-3 box-angka bg-gray-800 text-white w-100 rata-kiri garis-belakang">
                                     <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
                                     <div class="text-xs">
                                         {{ $pr->nama }}
@@ -152,7 +152,7 @@
                             </div>                             
                         @elseif ($pr->id == 7)
                             <div class="col-md-10 rata-kiri">
-                                <div class="px-3 box-angka bg-white text-dark w-100 rata-kiri">
+                                <div class="px-3 box-angka bg-white text-dark w-100 rata-kiri garis-belakang">
                                     <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
                                     <div class="text-xs">
                                         {{ $pr->nama }}
@@ -166,7 +166,7 @@
                             </div>                              
                         @else
                             <div class="col-md-10 rata-kiri">
-                                <div class="px-3 box-angka bg-white text-dark w-100 rata-kiri">
+                                <div class="px-3 box-angka bg-white text-dark w-100 rata-kiri garis-belakang">
                                     <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
                                     <div class="text-xs">
                                         {{ $pr->nama }}
@@ -186,15 +186,34 @@
         </div>
         <div class="col-xl-7 col-md-6 mb-4">
             <div class="row">
-                <div class="col-lg-6 mb-4">
+                <div class="col-lg-4 mb-4">
                     <div class="card bg-gray-100 h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
+                                <div class="col mr-2 rata-kiri">
+                                    <h3 class="mb-0 font-weight-bold mr-3">{{ $j_produk }}</h3>
                                     <div class="text-xs mb-1">
-                                        Pesanan Perlu Dikirim
+                                        Produk<br><b>Perlu Dikirim</b>
                                     </div>
-                                    <h4 class="mb-0 font-weight-bold ">{{ $j_order }}</h4>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="card-icon bg-danger">
+                                        <i class="fas fa-box fa-2x"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card bg-gray-100 h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2 rata-kiri">
+                                    <h3 class="mb-0 font-weight-bold mr-3">{{ $j_order }}</h3>
+                                    <div class="text-xs mb-1">
+                                        Pesanan<br><b>Perlu Dikirim</b>
+                                    </div>
                                 </div>
                                 <div class="col-auto">
                                     <div class="card-icon bg-orange">
@@ -205,7 +224,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 mb-4">
+                <div class="col-lg-4 mb-4">
                     <div  class="card bg-gray-100 h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">

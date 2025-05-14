@@ -389,3 +389,11 @@ thead th{
     }
   }
 }
+.garis-belakang::after{
+  content: " ";
+  border-bottom: 2px solid #666;
+  position: absolute;
+  width: 8%;
+  top: 50%;
+  right: -40px;;
+}
