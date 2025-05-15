@@ -94,11 +94,27 @@
             <div class="card bg-gray-100" style="height:275px">
                 <div class="card-body rata-tengah">
                     <div class="row no-gutters align-items-center w-100">
-                        <div class="col-lg-2">
-                            <div class="card-icon bg-success">
-                                <i class="fas fa-dollar fa-2x"></i>
-                            </div>
-                        </div>
+                        <div class="col-lg-2 rata-tengah">
+                           <div>
+                                <div class="rata-tengah">
+                                    <div class="card-icon bg-success rata-tengah">
+                                        <i class="fas fa-dollar fa-2x"></i>
+                                    </div>
+                                </div>
+                                @php
+                                    use Carbon\Carbon;
+
+                                    $bulanDipilih = request('bulan', date('m')); // default ke bulan sekarang
+                                    $tahunDipilih = request('tahun', date('Y')); // default ke tahun sekarang
+
+                                    $namaBulan = Carbon::createFromFormat('m', $bulanDipilih)->translatedFormat('F');
+                                @endphp
+                                <div class="mt-2 text-center">
+                                    <p class="text-xs m-0">Keuntungan</p>
+                                    <h5 class="m-0 font-weight-bold">{{ ucfirst($namaBulan) }} {{ $tahunDipilih }}</h5>
+                                </div>        
+                           </div>
+                        </div>         
                         <div class="col-lg-5 text-right" style="border-right: 1px solid #555;">
                             @php
                                 $total_masuk  = $grandMasuk-$grandKeluar;
@@ -199,8 +215,6 @@
                                 <div class="rata-kanan w-100 d-flex">
                                     <label class="m-0 mr-2">Filter tanggal</label>
                                     @php
-                                        use Carbon\Carbon;
-
                                         Carbon::setLocale('id');
                                         $bulanAktif = request('bulan', date('m'));
                                         $namaBulan = Carbon::createFromFormat('m', $bulanAktif)->translatedFormat('F');
@@ -269,8 +283,10 @@
                                             <td rowspan="{{ count($orders) }}">{{ date("d-m-y", strtotime($or->tgl_pesan)) }}</td>
                                             <td rowspan="{{ count($orders) }}">{{ date("d-m-y", strtotime($or->tgl_deadline)) }}</td>
                                         @endif      
-
-                                        <td>{{ $or->produk }}</td>
+                                        @php
+                                            $namaResmi = $produkList[$or->produk] ?? $or->produk;
+                                        @endphp
+                                        <td>{{ $namaResmi }}</td>
                                         <td>{{ $or->variasi }}</td>
                                         <td style="text-align:center">{{ $or->jumlah }}</td>
                                         @php

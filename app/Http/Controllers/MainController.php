@@ -16,6 +16,7 @@ class MainController extends Controller
 
         $order_baru    = order::where('status','Perlu Dikirim')->orderBy('tgl_pesan')->get();
         $groupedOrders = $order_baru->groupBy('no_pesan');
+        $produkList    = produk::pluck('nama', 'produk');
         $j_order       = order::where('status','Perlu Dikirim')->get()->unique('no_pesan')->count();
         $j_produk      = order::where('status','Perlu Dikirim')->get()->count();
         $produk        = produk::orderBy('id')->get();
@@ -69,6 +70,7 @@ class MainController extends Controller
             'order'           => $orders,
             'groupedOrders'   => $groupedOrders,
             'order_baru'      => $order_baru,
+            'produkList'      => $produkList,
             'j_order'         => $j_order,
             'j_produk'        => $j_produk,
             'j_bengkel'       => $j_bengkel,

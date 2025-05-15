@@ -61,8 +61,8 @@
                 </div>
             </div>
         </div> 
-        <div  class="col-xl-5 col-md-6 mb-4">
-            <div class="card bg-gray-100 h-100 py-2">
+        <div  class="col-xl-4 col-md-6 mb-4">
+            <div class="card bg-gray-100 py-2">
                 <div class="card-body pt-3 pb-1 px-5">
                     @foreach ($produk as $pr)
                     <div class="row no-gutters align-items-center mb-3">
@@ -184,7 +184,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-7 col-md-6 mb-4">
+        <div class="col-xl-8 col-md-6 mb-4">
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <div class="card bg-gray-100 h-100 py-2">
@@ -255,8 +255,46 @@
                             </div>
                         </div>
                     </div>
-                </div>    
-                <div class="col-lg-12">
+                </div>  
+                <div class="col-lg-3 mb-4">
+                    <div class="card bg-gray-100" style="height:275px">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                 <div class="col-lg-12 text-center">
+                                    <div class="px-3 mb-2 pb-2 job job-list-light">
+                                        <div class="text-xs mb-1">
+                                            Perlu Dikirim
+                                        </div>
+                                        <h5 class="m-0 font-weight-bold">
+                                            25
+                                        </h5>
+                                    </div>
+                                    <div class="px-3 mb-2 pb-2 job job-list-light">
+                                        <div class="text-xs mb-1">
+                                            Dikirim
+                                        </div>
+                                        <h5 class="m-0 font-weight-bold">
+                                            22
+                                        </h5>
+                                    </div>
+                                    <div class="px-3 mb-2">
+                                        <div class="text-xs mb-1">
+                                            Selesai
+                                        </div>
+                                        <h5 class="m-0 font-weight-bold">
+                                            32
+                                        </h5>
+                                    </div>
+                                    <div class="px-3 box-angka bg-orange text-white shadow-dark text-center">
+                                        <p class="m-0"><b>Total</b></p>
+                                        <h4 class="m-0 font-weight-bold">115</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                <div class="col-lg-9">
                     <div class="card bg-gray-100" style="height:275px">
                         <div class="card-body rata-tengah">
                             <div class="row no-gutters align-items-center w-100">
@@ -267,7 +305,7 @@
                                                 <i class="fas fa-dollar fa-2x"></i>
                                             </div>
                                         </div>
-                                        <div class="mt-2">
+                                        <div class="mt-2 text-center">
                                             <p class="text-xs m-0">Keuntungan</p>
                                             <h5 class="m-0 font-weight-bold">{{ \Carbon\Carbon::now()->translatedFormat('F Y') }}</h5>
                                         </div>
@@ -362,12 +400,12 @@
                                     <th><center>No</center></th>
                                     <th>Status</th>
                                     <th>No Pesanan</th>
+                                    <th>Customer</th>
                                     <th>Pesan</th>
                                     <th>Deadline</th>
                                     <th>Nama Barang</th>
                                     <th>Variasi</th>
                                     <th><center>Jumlah<center></th>
-                                    <th>Customer</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -387,17 +425,16 @@
                                                 @endif
                                             </td>
                                             <td rowspan="{{ count($orders) }}">{{ $or->no_pesan }}</td>
+                                            <td rowspan="{{ count($orders) }}">{{ $or->nama }}</td>
                                             <td rowspan="{{ count($orders) }}">{{ date("d-m-y", strtotime($or->tgl_pesan)) }}</td>
                                             <td rowspan="{{ count($orders) }}">{{ date("d-m-y", strtotime($or->tgl_deadline)) }}</td>
                                         @endif
-                        
-                                        <td>{{ $or->produk }}</td>
+                                        @php
+                                            $namaResmi = $produkList[$or->produk] ?? $or->produk;
+                                        @endphp
+                                        <td>{{ $namaResmi }}</td>
                                         <td>{{ $or->variasi }}</td>
                                         <td style="text-align:center">{{ $or->jumlah }}</td>
-                        
-                                        @if ($index === 0)
-                                            <td rowspan="{{ count($orders) }}">{{ $or->nama }}</td>
-                                        @endif
                                     </tr>
                                     @endforeach
                                 @endforeach

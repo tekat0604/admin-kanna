@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\order;
 use App\Models\pengeluaran;
+use App\Models\produk;
 
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\OrderImport;
@@ -30,6 +31,7 @@ class OrderController extends Controller
     
         $orders          = (clone $filteredQuery)->orderBy('tgl_pesan','DESC')->get();
         $groupedOrders   = $orders->groupBy('no_pesan');
+         $produkList     = produk::pluck('nama', 'produk');
         $selesais        = (clone $filteredQuery)->where('status', 'Selesai')->get();
         $jml_perlukirims = (clone $filteredQuery)->where('status', 'Perlu Dikirim')->get()->unique('no_pesan')->count();
         $jml_dikirims    = (clone $filteredQuery)->where('status', 'Dikirim')->get()->unique('no_pesan')->count();
@@ -68,6 +70,7 @@ class OrderController extends Controller
         return view('order.order', [
             'order'           => $orders,
             'groupedOrders'   => $groupedOrders,
+            'produkList'      => $produkList,
             'jml_perlukirim'  => $jml_perlukirims,
             'jml_dikirim'     => $jml_dikirims,
             'jml_selesai'     => $jml_selesais,
