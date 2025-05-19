@@ -72,14 +72,14 @@
                         <div class="card bg-gray-100">
                             <div class="card-body rata-tengah">
                                 <div class="row no-gutters align-items-center w-100">
-                                    <div class="col-lg-2 rata-tengah">
+                                    <div class="col-lg-3 rata-tengah">
                                         <div class="mt-2">
                                             <h4 class="m-0 font-weight-bold">
                                                 <span class="text-success">{{ ucfirst($namaBulan) }}</span><br>{{ $tahunDipilih }}
                                             </h4>
                                         </div>    
                                     </div>         
-                                    <div class="col-lg-10 text-right">
+                                    <div class="col-lg-9 text-right">
                                         <div class="px-4 mb-3">
                                             <div class="pb-3" style="border-bottom: 1px solid #555;">
                                                 <div class="text-xs mb-1">Untung Kotor</div>

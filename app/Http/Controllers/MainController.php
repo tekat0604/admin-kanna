@@ -120,19 +120,19 @@ class MainController extends Controller
         $pengeluaranPerBulan    = $pengeluaran->groupBy(function ($item) {
                                 return \Carbon\Carbon::parse($item->tgl_keluar)->format('m');
                                 });
-        $produkPerBulan = DB::table('order')
-        ->join('produk', 'order.produk', '=', 'produk.produk') // Join ke tabel produk
-        ->select(
-            DB::raw('MONTH(order.tgl_pesan) as bulan'),
-            'produk.nama',
-            DB::raw('COUNT(*) as total_order')
-        )
-        ->whereYear('order.tgl_pesan', $tahun)
-        ->groupBy('bulan', 'produk.nama')
-        ->orderBy('bulan')
-        ->orderByDesc('total_order')
-        ->get()
-        ->groupBy('bulan');
+        $produkPerBulan         = DB::table('order')
+                                ->join('produk', 'order.produk', '=', 'produk.produk') // Join ke tabel produk
+                                ->select(
+                                    DB::raw('MONTH(order.tgl_pesan) as bulan'),
+                                    'produk.nama',
+                                    DB::raw('COUNT(*) as total_order')
+                                )
+                                ->whereYear('order.tgl_pesan', $tahun)
+                                ->groupBy('bulan', 'produk.nama')
+                                ->orderBy('bulan')
+                                ->orderByDesc('total_order')
+                                ->get()
+                                ->groupBy('bulan');
 
         // Ambil 3 produk teratas per bulan
         $produkTeratasPerBulan = [];
