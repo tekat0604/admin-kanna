@@ -36,7 +36,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{ route('laba') }}">
             <i class="fas fa-dollar"></i>
             <span>Keuntungan</span>
         </a>

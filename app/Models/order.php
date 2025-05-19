@@ -19,4 +19,8 @@ class order extends Model
                             'jumlah',
                             'harga',
                             'status'];
+    public function AmbilProduk()
+    {
+        return $this->belongsTo(produk::class, 'produk','produk');
+    }
 }

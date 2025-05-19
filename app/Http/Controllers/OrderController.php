@@ -31,21 +31,21 @@ class OrderController extends Controller
     
         $orders          = (clone $filteredQuery)->orderBy('tgl_pesan','DESC')->get();
         $groupedOrders   = $orders->groupBy('no_pesan');
-         $produkList     = produk::pluck('nama', 'produk');
-        $selesais        = (clone $filteredQuery)->where('status', 'Selesai')->get();
-        $jml_perlukirims = (clone $filteredQuery)->where('status', 'Perlu Dikirim')->get()->unique('no_pesan')->count();
-        $jml_dikirims    = (clone $filteredQuery)->where('status', 'Dikirim')->get()->unique('no_pesan')->count();
-        $jml_selesais    = (clone $filteredQuery)->where('status', 'Selesai')->get()->unique('no_pesan')->count();
+        $produkList     = produk::pluck('nama', 'produk');
+        $selesais        = (clone $filteredQuery)->where('status', 'selesai')->get();
+        $jml_perlukirims = (clone $filteredQuery)->where('status', 'perlu dikirim')->get()->unique('no_pesan')->count();
+        $jml_dikirims    = (clone $filteredQuery)->where('status', 'dikirim')->get()->unique('no_pesan')->count();
+        $jml_selesais    = (clone $filteredQuery)->where('status', 'selesai')->get()->unique('no_pesan')->count();
         $pengeluaran     = Pengeluaran::where('status','sudah ambil')->whereMonth('tgl_keluar', $bulan)
                            ->whereYear('tgl_keluar', $tahun)
                            ->get();
-        $jml_totals      = (clone $filteredQuery)->count();
+        $jml_totals      = (clone $filteredQuery)->get()->unique('no_pesan')->count();
     
-        $grandTotal = 0;
-        $grandPotongan = 0;
-        $grandBersih = 0;
-        $grandMasuk = 0;
-        $grandKeluar = 0;
+        $grandTotal     = 0;
+        $grandPotongan  = 0;
+        $grandBersih    = 0;
+        $grandMasuk     = 0;
+        $grandKeluar    = 0;
     
         foreach ($orders as $or) {
             $total    = $or->harga * $or->jumlah;

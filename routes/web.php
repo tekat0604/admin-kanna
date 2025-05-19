@@ -5,7 +5,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ModalController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +24,9 @@ Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('acti
 Route::get('/home', [MainController::class, 'index'])->name('home')->middleware('auth');
 Route::resource('order', OrderController::class)->middleware('auth');
 Route::post('/import', [OrderController::class, 'import'])->name('import')->middleware('auth');
+Route::post('/import-excel', [MainController::class, 'import'])->name('import-excel')->middleware('auth');
 Route::resource('pengeluaran', ModalController::class)->middleware('auth');
+Route::get('/laba', [MainController::class, 'laba'])->name('laba')->middleware('auth');
 Route::get('/optimize', function () {
     Artisan::call('optimize:clear');
     return redirect('/'); 

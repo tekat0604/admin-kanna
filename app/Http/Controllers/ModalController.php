@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\pengeluaran;
+use App\Models\order;
 
 class ModalController extends Controller
 {
@@ -114,7 +115,6 @@ class ModalController extends Controller
         
         $input = $request->all();
         $pengeluaran->update($input);
-        
         return redirect()->route('pengeluaran.index')
                           ->with('success','Keterangan Pengeluaran berhasil diupdate');
     }
