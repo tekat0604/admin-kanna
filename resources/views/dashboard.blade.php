@@ -208,7 +208,7 @@
                                                     $totalbuat2025 =  $j_buat2025->sum('total_buat2025');
                                                     $totalbuat     =  $j_buat->sum('total_buat');
                                                 @endphp
-                                                {{ $totalbuat2025 }}
+                                                {{ number_format($totalbuat2025, 0, ',', '.') }}
                                             </h4>
                                         </div>
                                         <div class="pl-3 text-center">
@@ -216,7 +216,7 @@
                                                 Total
                                             </div>
                                             <h4 class="m-0 font-weight-bold">
-                                                {{ $totalbuat }}
+                                                {{ number_format($totalbuat, 0, ',', '.') }}
                                             </h4>
                                         </div>
                                     </div>
@@ -241,10 +241,10 @@
                                     <div class="rata-tengah">
                                         <div class="px-3 text-center" style="border-left: 1px solid #555; border-right: 1px solid #555;">
                                             <div class="text-xs mb-1">
-                                                <b>{{ \Carbon\Carbon::now()->translatedFormat('Y') }}</b>
+                                                {{ \Carbon\Carbon::now()->translatedFormat('Y') }}
                                             </div>
                                             <h4 class="m-0 font-weight-bold">
-                                                {{ $j_order2025 }}
+                                                {{ number_format($j_order2025, 0, ',', '.') }}
                                             </h4>
                                         </div>
                                         <div class="pl-3 text-center">
@@ -252,7 +252,7 @@
                                                 Total
                                             </div>
                                             <h4 class="m-0 font-weight-bold">
-                                                {{ $j_ordertotal }}
+                                                {{ number_format($j_ordertotal, 0, ',', '.') }}
                                             </h4>
                                         </div>
                                     </div>

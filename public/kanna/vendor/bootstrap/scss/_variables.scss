@@ -48,6 +48,7 @@ $dark-2:  #2B2A33 !default;
 $dark-3:  #495057 !default;
 $main-1:  #ff6600 !default;
 $kanna:   #00AAAC !default;
+$grin : #097969 !default;
 
 $colors: () !default;
 $colors: map-merge(
@@ -68,7 +69,8 @@ $colors: map-merge(
     "dark-1":     $dark-1,
     "dark-2":     $dark-2,
     "dark-3":     $dark-3,
-    "kanna":      $kanna
+    "kanna":      $kanna,
+    "grin":       $grin
   ),
   $colors
 );
@@ -100,7 +102,8 @@ $theme-colors: map-merge(
     "dark-1":     $dark-1,
     "dark-2":     $dark-2,
     "dark-3":     $dark-3,
-    "kanna":      $kanna
+    "kanna":      $kanna,
+    "grin":       $grin
   ),
   $theme-colors
 );
