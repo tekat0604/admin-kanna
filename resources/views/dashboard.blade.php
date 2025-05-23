@@ -15,7 +15,7 @@
                     @foreach ($j_produkkirim as $index => $pr)
                     <div class="row no-gutters align-items-center mb-3">
                         @if ($pr->id == 1)
-                            <div class="col-md-10 rata-kiri">
+                            <div class="col-md-9 rata-kiri">
                                 <div class="px-3 box-angka bg-warning w-100 rata-kiri garis-belakang" style="color:#333 !important">
                                     <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
                                     <div class="text-xs">
@@ -23,13 +23,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-2 rata-kanan">
+                            <div class="col-md-3 rata-kanan">
                                 <h4 class="m-0 font-weight-bold">
                                     {{ $pr->perlu_kirim_count ?? 0 }}
                                 </h4>
                             </div>
                         @elseif ($pr->id == 2)
-                            <div class="col-md-10 rata-kiri">
+                            <div class="col-md-9 rata-kiri">
                                 <div class="px-3 box-angka bg-kanna text-white w-100 rata-kiri garis-belakang">
                                     <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
                                     <div class="text-xs">
@@ -37,13 +37,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-2 rata-kanan">
+                            <div class="col-md-3 rata-kanan">
                                 <h4 class="m-0 font-weight-bold">
                                     {{ $pr->perlu_kirim_count ?? 0 }}
                                 </h4>
                             </div>
                         @elseif ($pr->id == 3)
-                            <div class="col-md-10 rata-kiri">
+                            <div class="col-md-9 rata-kiri">
                                 <div class="px-3 box-angka bg-danger text-white w-100 rata-kiri garis-belakang">
                                     <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
                                     <div class="text-xs">
@@ -51,13 +51,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-2 rata-kanan">
+                            <div class="col-md-3 rata-kanan">
                                 <h4 class="m-0 font-weight-bold">
                                     {{ $pr->perlu_kirim_count ?? 0 }}
                                 </h4>
                             </div>
                         @elseif ($pr->id == 4)
-                            <div class="col-md-10 rata-kiri">
+                            <div class="col-md-9 rata-kiri">
                                 <div class="px-3 box-angka bg-info text-white w-100 rata-kiri garis-belakang">
                                     <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
                                     <div class="text-xs">
@@ -65,13 +65,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-2 rata-kanan">
+                            <div class="col-md-3 rata-kanan">
                                 <h4 class="m-0 font-weight-bold">
                                     {{ $pr->perlu_kirim_count ?? 0 }}
                                 </h4>
                             </div>                             
                         @elseif ($pr->id == 5)
-                            <div class="col-md-10 rata-kiri">
+                            <div class="col-md-9 rata-kiri">
                                 <div class="px-3 box-angka bg-success text-white w-100 rata-kiri garis-belakang">
                                     <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
                                     <div class="text-xs">
@@ -79,13 +79,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-2 rata-kanan">
+                            <div class="col-md-3 rata-kanan">
                                 <h4 class="m-0 font-weight-bold">
                                     {{ $pr->perlu_kirim_count ?? 0 }}
                                 </h4>
                             </div>                                                         
                         @elseif ($pr->id == 6)
-                            <div class="col-md-10 rata-kiri">
+                            <div class="col-md-9 rata-kiri">
                                 <div class="px-3 box-angka bg-gray-800 text-white w-100 rata-kiri garis-belakang">
                                     <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
                                     <div class="text-xs">
@@ -93,13 +93,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-2 rata-kanan">
+                            <div class="col-md-3 rata-kanan">
                                 <h4 class="m-0 font-weight-bold">
                                     {{ $pr->perlu_kirim_count ?? 0 }}
                                 </h4>
                             </div>                             
                         @elseif ($pr->id == 7)
-                            <div class="col-md-10 rata-kiri">
+                            <div class="col-md-9 rata-kiri">
                                 <div class="px-3 box-angka bg-white text-dark w-100 rata-kiri garis-belakang">
                                     <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
                                     <div class="text-xs">
@@ -107,13 +107,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-2 rata-kanan">
+                            <div class="col-md-3 rata-kanan">
                                 <h4 class="m-0 font-weight-bold">
                                     {{ $pr->perlu_kirim_count ?? 0 }}
                                 </h4>
                             </div>     
                         @elseif ($pr->id == 8)
-                            <div class="col-md-10 rata-kiri">
+                            <div class="col-md-9 rata-kiri">
                                 <div class="px-3 box-angka text-dark w-100 rata-kiri garis-belakang" style="background-color: #6610f2; color:#fff !important;">
                                     <div class="text-xs mr-2">{{ $loop->iteration }}.</div>
                                     <div class="text-xs">
@@ -121,7 +121,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-2 rata-kanan">
+                            <div class="col-md-3 rata-kanan">
                                 <h4 class="m-0 font-weight-bold">
                                     {{ $pr->perlu_kirim_count ?? 0 }}
                                 </h4>
@@ -233,7 +233,7 @@
                                     <div class="card-icon bg-danger mr-2">
                                         <i class="fas fa-list fa-2x"></i>
                                     </div>
-                                    <div class="text-xs m-0">
+                                    <div class="text-xs m-0 text-left">
                                         Order<br>Masuk
                                     </div>
                                  </div>
@@ -326,7 +326,7 @@
                                     <p class="text-xs m-0"><b>Pack Kayu</b><br>Perlu Dibuat</p>
                                 </div>
                                 <div class="">
-                                    <h3 class="mb-0 font-weight-bold mr-3">{{ $j_produk }}</h3>
+                                    <h3 class="mb-0 font-weight-bold mr-3">{{ $j_packkayu }}</h3>
                                 </div>
                             </div>
                         </div>
@@ -432,7 +432,7 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-produk mb-3" id="tablelayanan" width="100%" cellspacing="0">
+                        <table class="table table-striped table-produk mb-3" id="tablelayanan" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th><center>No</center></th>
@@ -441,40 +441,56 @@
                                     <th>Customer</th>
                                     <th>Pesan</th>
                                     <th>Deadline</th>
-                                    <th>Nama Barang</th>
-                                    <th>Variasi</th>
-                                    <th><center>Jumlah<center></th>
+                                    <th>Nama Barang & Variasi</th>
+                                    <th class="text-right">Jumlah</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php $no = 1; @endphp
                                 @foreach ($groupedOrders as $no_pesan => $orders)
-                                    @foreach ($orders as $index => $or)
-                                    <tr>
-                                        @if ($index === 0)
-                                            <td rowspan="{{ count($orders) }}"><center>{{ $no++ }}.</center></td>
-                                            <td rowspan="{{ count($orders) }}">
-                                                @if($or->status == 'Perlu Dikirim')
-                                                    <badge class="badge badge-danger" style="padding: 7px">{{ $or->status }}</badge>
-                                                @elseif($or->status == 'Dikirim')
-                                                    <badge class="badge badge-info" style="padding: 7px">{{ $or->status }}</badge>
-                                                @else
-                                                    <badge class="badge badge-success" style="padding: 7px">{{ $or->status }}</badge>
-                                                @endif
-                                            </td>
-                                            <td rowspan="{{ count($orders) }}">{{ $or->no_pesan }}</td>
-                                            <td rowspan="{{ count($orders) }}">{{ $or->nama }}</td>
-                                            <td rowspan="{{ count($orders) }}">{{ date("d-m-y", strtotime($or->tgl_pesan)) }}</td>
-                                            <td rowspan="{{ count($orders) }}">{{ date("d-m-y", strtotime($or->tgl_deadline)) }}</td>
-                                        @endif
-                                        @php
+                                    @php
+                                        // Ambil order pertama untuk informasi umum
+                                        $firstOrder = $orders[0];
+                                        // Siapkan data produk, variasi, jumlah
+                                        $produkListText = '';
+                                        $variasiListText = '';
+                                        $jumlahListText = '';
+                                        $nom = 1;
+                                        foreach ($orders as $or) {
                                             $namaResmi = $produkList[$or->produk] ?? $or->produk;
-                                        @endphp
-                                        <td>{{ $namaResmi }}</td>
-                                        <td>{{ $or->variasi }}</td>
-                                        <td style="text-align:center">{{ $or->jumlah }}</td>
+                                            $produkListText .= '<div class="row no-gutters job job-list-light mb-2 pb-2 rata">
+                                                                    <div class="col rata-kiri">
+                                                                        <p class="m-0 mr-3">'.$nom++.'.</p>
+                                                                        <div>
+                                                                            <p class="m-0 font-weight-bold">' .$namaResmi . '</p>
+                                                                            <p class="m-0">'. $or->variasi .'</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-auto">
+                                                                        <p class="m-0 font-weight-bold text-right mr-3">' .$or->jumlah . '</p>
+                                                                    </div>
+                                                                </div>'; 
+                                        }
+                                    @endphp
+                                    <tr>
+                                        <td><center>{{ $no++ }}.</center></td>
+                                        <td>
+                                            @if($firstOrder->status == 'Perlu Dikirim')
+                                                <badge class="badge badge-danger" style="padding: 7px">{{ $firstOrder->status }}</badge>
+                                            @elseif($firstOrder->status == 'Dikirim')
+                                                <badge class="badge badge-info" style="padding: 7px">{{ $firstOrder->status }}</badge>
+                                            @else
+                                                <badge class="badge badge-success" style="padding: 7px">{{ $firstOrder->status }}</badge>
+                                            @endif
+                                        </td>
+                                        <td>{{ $firstOrder->no_pesan }}</td>
+                                        <td>{{ $firstOrder->nama }}</td>
+                                        <td>{{ date("d-m-y", strtotime($firstOrder->tgl_pesan)) }}</td>
+                                        <td>{{ date("d-m-y", strtotime($firstOrder->tgl_deadline)) }}</td>
+                                        <td class="pb-1" colspan="2">
+                                            {!! $produkListText !!}
+                                        </td>
                                     </tr>
-                                    @endforeach
                                 @endforeach
                             </tbody>
                         </table>

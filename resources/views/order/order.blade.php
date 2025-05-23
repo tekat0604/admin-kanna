@@ -246,63 +246,85 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-produk mb-3" id="tablelayanan" width="100%" cellspacing="0">
+                        <table class="table table-striped table-produk mb-3" id="tablelayanan" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th><center>No</center></th>
                                     <th>Status</th>
                                     <th>No Pesanan</th>
+                                    <th>Customer</th>
                                     <th>Pesan</th>
-                                    <th>Deadline</th>
-                                    <th>Nama Barang</th>
-                                    <th>Variasi</th>
-                                    <th><center>Jumlah<center></th>
+                                    <th>Nama Barang & Variasi</th>
+                                    <th class="text-right">Jumlah</th>
                                     <th>Total</th>
                                     <th>Potong</th>
                                     <th>Bersih</th>
-                                    <th>Customer</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php $no = 1; @endphp
                                 @foreach ($groupedOrders as $no_pesan => $orders)
-                                    @foreach ($orders as $index => $or)
-                                    <tr @if($index === 0) data-status="{{ strtolower($or->status) }}" @endif>
-                                        @if ($index === 0)
-                                            <td rowspan="{{ count($orders) }}"><center>{{ $no++ }}.</center></td>
-                                            <td rowspan="{{ count($orders) }}">
-                                                @if($or->status == 'Perlu Dikirim')
-                                                    <badge class="badge badge-danger" style="padding: 7px">{{ $or->status }}</badge>
-                                                @elseif($or->status == 'Dikirim')
-                                                    <badge class="badge badge-info" style="padding: 7px">{{ $or->status }}</badge>
-                                                @else
-                                                    <badge class="badge badge-success" style="padding: 7px">{{ $or->status }}</badge>
-                                                @endif
-                                            </td>
-                                            <td rowspan="{{ count($orders) }}">{{ $or->no_pesan }}</td>
-                                            <td rowspan="{{ count($orders) }}">{{ date("d-m-y", strtotime($or->tgl_pesan)) }}</td>
-                                            <td rowspan="{{ count($orders) }}">{{ date("d-m-y", strtotime($or->tgl_deadline)) }}</td>
-                                        @endif      
-                                        @php
+                                    @php
+                                        // Ambil order pertama untuk informasi umum
+                                        $firstOrder = $orders[0];
+                                        // Siapkan data produk, variasi, jumlah
+                                        $produkListText = '';
+                                        $jumlahListText = '';
+                                        $hargaListText = '';
+                                        $potongan = '';
+                                        $total_bersih ='';
+                                        $nom = 1;
+                                        foreach ($orders as $or) {
                                             $namaResmi = $produkList[$or->produk] ?? $or->produk;
-                                        @endphp
-                                        <td>{{ $namaResmi }}</td>
-                                        <td>{{ $or->variasi }}</td>
-                                        <td style="text-align:center">{{ $or->jumlah }}</td>
-                                        @php
-                                            $total    = $or->harga*$or->jumlah;
-                                            $potongan = intval((7.5*$total/100)+(2.25*$total/100)+(1.4*$total/100)+(4*$total/100));
-                                            $bersih   = $total - $potongan;
-                                            $total_bersih += $bersih;
-                                        @endphp
-                                        <td style="text-align:right">{{ number_format($total, 0, ',', '.') }}</td>
-                                        <td style="text-align:right">{{ number_format($potongan, 0, ',', '.') }}</td>
-                                        <td style="text-align:right">{{ number_format($bersih, 0, ',', '.') }}</td>
-                                        @if ($index === 0)
-                                            <td rowspan="{{ count($orders) }}">{{ $or->nama }}</td>
-                                        @endif
+                                            $total=$or->harga*$or->jumlah;
+                                            $potongan_harga = (7.5*$total/100)+(2.25*$total/100)+(1.4*$total/100)+(4*$total/100);
+                                            $bersih = $total-$potongan_harga;
+
+                                            $produkListText .= '<div class="row no-gutters job job-list-light mb-1 pb-2" style="height:50px">
+                                                                    <div class="col rata-kiri">
+                                                                        <p class="m-0 mr-3">'.$nom++.'.</p>
+                                                                        <div>
+                                                                            <p class="m-0 font-weight-bold">' .$namaResmi . '</p>
+                                                                            <p class="m-0">'. $or->variasi .'</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>'; 
+                                            $jumlahListText .= '<div class="job job-list-light mb-1 pb-2 rata-tengah" style="height:50px;">
+                                                                    <p class="m-0">' . number_format($or->jumlah, 0, ',', '.') . '</p>
+                                                                </div>';
+                                            $hargaListText .= '<div class="job job-list-light mb-1 pb-2 rata-kanan" style="height:50px;">
+                                                                    <p class="m-0">' . number_format($or->harga*$or->jumlah, 0, ',', '.') . '</p>
+                                                                </div>';
+                                            $potongan .= '<div class="job job-list-light mb-1 pb-2 rata-kanan" style="height:50px;">
+                                                                    <p class="m-0">' . number_format($potongan_harga, 0, ',', '.') . '</p>
+                                                                </div>';
+                                            $total_bersih.='<div class="job job-list-light mb-1 pb-2 rata-kanan" style="height:50px;">
+                                                                    <p class="m-0">' . number_format($bersih, 0, ',', '.') . '</p>
+                                                                </div>';
+                                        }
+                                    @endphp
+                                    <tr>
+                                        <td><center>{{ $no++ }}.</center></td>
+                                        <td>
+                                            @if($firstOrder->status == 'Perlu Dikirim')
+                                                <badge class="badge badge-danger" style="padding: 7px">{{ $firstOrder->status }}</badge>
+                                            @elseif($firstOrder->status == 'Dikirim')
+                                                <badge class="badge badge-info" style="padding: 7px">{{ $firstOrder->status }}</badge>
+                                            @else
+                                                <badge class="badge badge-success" style="padding: 7px">{{ $firstOrder->status }}</badge>
+                                            @endif
+                                        </td>
+                                        <td>{{ $firstOrder->no_pesan }}</td>
+                                        <td>{{ $firstOrder->nama }}</td>
+                                        <td>{{ date("d-m-y", strtotime($firstOrder->tgl_pesan)) }}</td>
+                                        <td class="pb-1">
+                                            {!! $produkListText !!}
+                                        </td>
+                                         <td class="pb-1" style="text-align:right">{!! $jumlahListText !!}</td>
+                                        <td class="pb-1" style="text-align:right">{!! $hargaListText !!}</td>
+                                        <td style="text-align:right">{!! $potongan !!}</td>
+                                        <td style="text-align:right">{!! $total_bersih !!}</td>
                                     </tr>
-                                    @endforeach
                                 @endforeach
                             </tbody>
                         </table>

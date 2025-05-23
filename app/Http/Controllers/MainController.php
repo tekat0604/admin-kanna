@@ -39,6 +39,9 @@ class MainController extends Controller
         $j_buat         = Produk::withSum('AmbilOrder as total_buat', 'jumlah')->get();
         $j_order2025    = order::whereYear('tgl_pesan', $tahun_ini)->get()->unique('no_pesan')->count();
         $j_ordertotal   = order::get()->unique('no_pesan')->count();
+        $j_packkayu     = order::whereMonth('tgl_pesan', $bulan_ini)
+                         ->whereYear('tgl_pesan', $tahun_ini)->where('produk','pack kayu')
+                         ->count();
 
         $grandTotal = 0;
         $grandPotongan = 0;
@@ -78,6 +81,7 @@ class MainController extends Controller
             'j_produkkirim'   => $j_produkkirim,
             'j_buat2025'      => $j_buat2025,
             'j_buat'          => $j_buat,
+            'j_packkayu'      => $j_packkayu,
             'title'           => 'Dashboard',
             'grandTotal'      => $grandTotal,
             'grandPotongan'   => $grandPotongan,
@@ -113,7 +117,10 @@ class MainController extends Controller
         $order                  = (clone $filteredQuery)->orderBy('tgl_pesan')->get();
         $ordersPerBulan         = $order->groupBy(function ($order) {
                                     return Carbon::parse($order->tgl_pesan)->format('m');
-                                    });
+                                });
+        $jumlahOrderPerBulan    = $ordersPerBulan->map(function ($orders) {
+                                    return $orders->unique('no_pesan')->count();
+                                });
         $pengeluaran            = Pengeluaran::where('status', 'sudah ambil')
                                 ->whereYear('tgl_keluar', $tahun)
                                 ->get();
@@ -144,6 +151,7 @@ class MainController extends Controller
         return view('laba.laba', [
             'order'                 => $order,
             'ordersPerBulan'        => $ordersPerBulan,
+            'jumlahOrderPerBulan'   => $jumlahOrderPerBulan,
             'pengeluaran'           => $pengeluaran,
             'pengeluaranPerBulan'   => $pengeluaranPerBulan,
             'ordersPerBulan'        => $ordersPerBulan,

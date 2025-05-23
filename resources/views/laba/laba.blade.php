@@ -75,80 +75,109 @@
                 <div class="card bg-gray-100" style="height: 160px">
                     <div class="card-body rata-tengah">
                         <div class="row no-gutters align-items-center w-100">
-                            <div class="col-md-5 pr-3" style="border-right: 1px solid #555;">
-                                <div class="row align-items-center w-100">
-                                    <div class="col-lg-12 p-0 text-right">
-                                        <div class="px-3 mb-3">
-                                            <div class="pb-3 rata" style="border-bottom: 1px solid #555;">
-                                                <h5 class="m-0 font-weight-bold">Laba Rugi</h5>
-                                                <div class="rata-kanan">
-                                                    <div class="text-xs m-0 mr-2">Untung Kotor</div>
-                                                    <h5 class="m-0 font-weight-bold">{{ number_format($subtotal, 0, ',', '.') }}</h5>
+                            <div class="col-md-6 pr-3" style="border-right: 1px solid #555;">
+                                <div class="px-3 mb-3">
+                                    <div class="pb-3 rata" style="border-bottom: 1px solid #555;">
+                                        <h5 class="m-0 font-weight-bold">Laba Rugi</h5>
+                                        <div class="rata-kanan">
+                                            <div class="text-xs m-0 mr-2">Untung Kotor</div>
+                                            <h5 class="m-0 font-weight-bold">{{ number_format($subtotal, 0, ',', '.') }}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="px-3 mb-3 rata-kanan"> 
+                                    <div class="mr-3 pr-3 text-right" style="width:25%; border-right: 1px solid #555;">
+                                        <div class="text-xs mb-1 text-right">Margin Keuntungan
+                                        </div>
+                                        <div class="row no-gutters align-items-center">
+                                            @php
+                                                $persen=number_format(($labaBersih/$subtotal)*100, 0, ',', '');
+                                            @endphp
+                                            <div class="col-auto rata-kanan">
+                                                <h5 class="mb-0 mr-2 font-weight-bold ">{{ $persen }}%</h5>
+                                            </div>
+                                            <div class="col">
+                                                <div class="progress progress-sm">
+                                                    <div class="progress-bar bg-info" role="progressbar"
+                                                        style="width: {{ $persen }}%" aria-valuenow="20" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="px-3 mb-3 rata-kanan"> 
-                                            <div class="mr-3 pr-3" style="border-right: 1px solid #555;">
-                                                <div class="text-xs mb-1">Pot. Shopee</div>
-                                                <h5 class="m-0 font-weight-bold">{{ number_format($subpotongan, 0, ',', '.') }}</h5>
-                                            </div>
-                                            <div class="mr-3 pr-3" style="border-right: 1px solid #555;">
-                                                <div class="text-xs mb-1">Kulakan + Gaji</div>
-                                                <h5 class="m-0 font-weight-bold">{{ number_format($totalPengeluaran, 0, ',', '.') }}</h5>
-                                            </div>
-                                            <div class="px-3 box-angka bg-grin text-white shadow-dark ">
-                                                <div class="text-right">
-                                                    <p class="m-0 mb-1">Untung Bersih</p>
-                                                    <h5 class="m-0 font-weight-bold">{{ number_format($labaBersih, 0, ',', '.') }}</h5>
-                                                </div>
-                                            </div>
-                                        </div> 
                                     </div>
-                                </div>
+                                    <div class="mr-3 pr-3 text-right" style="border-right: 1px solid #555;">
+                                        <div class="text-xs mb-1">Pot. Shopee</div>
+                                        <h5 class="m-0 font-weight-bold">{{ number_format($subpotongan, 0, ',', '.') }}</h5>
+                                    </div>
+                                    <div class="mr-3 pr-3  text-right" style="border-right: 1px solid #555;">
+                                        <div class="text-xs mb-1">Kulakan + Gaji</div>
+                                        <h5 class="m-0 font-weight-bold">{{ number_format($totalPengeluaran, 0, ',', '.') }}</h5>
+                                    </div>
+                                    <div class="px-3 box-angka bg-grin text-white shadow-dark ">
+                                        <div class="text-right">
+                                            <p class="m-0 mb-1">Untung Bersih</p>
+                                            <h5 class="m-0 font-weight-bold">{{ number_format($labaBersih, 0, ',', '.') }}</h5>
+                                        </div>
+                                    </div>
+                                    
+                                </div> 
                             </div> {{-- end row --}}
-                            <div class="col-md-4 px-4" style="border-right: 1px solid #555;">
+                            <div class="col-md-3 px-4 h-100" style="border-right: 1px solid #555;">
                                 @php
                                     $namaBulan = \Carbon\Carbon::createFromFormat('m', $bulan)->locale('id')->translatedFormat('F');
                                     $daftarProduk = $produkTeratasPerBulan[$bulan] ?? collect();
                                 @endphp
-                                <h5 class="font-weight-bold">Produk Terlaku</h5>
-                                @if ($daftarProduk->isEmpty())
-                                    <p><em>Tidak ada data produk untuk bulan ini.</em></p>
-                                @else
-                                    @foreach ($daftarProduk as $produk)
-                                        <div class="rata align-items-center job job-list-light mb-1 pb-1">
-                                            <p class="text-xs m-0">{{ $loop->iteration }}. {{ $produk->nama }}</p>
-                                            <div class="">
-                                                <h5 class="mb-0 font-weight-bold mr-3">{{ $produk->total_order }}</h5>
-                                            </div>
+                                <div class="row no-gutters w-100">
+                                    <div class="col-12 mt-0 mb-2">
+                                        <h5 class="m-0 font-weight-bold">Produk Terlaris</h5>
+                                    </div>
+                                    <div class="col-3 rata-kiri" style="height: 100px">
+                                        <div class="card-icon bg-danger">
+                                            <i class="fas fa-cubes fa-2x"></i>
                                         </div>
-                                    @endforeach
-                                @endif
+                                    </div>
+                                    <div class="col-9 rata-kiri" style="height: 100px">
+                                        <div class="w-100">
+                                        @if ($daftarProduk->isEmpty())
+                                            <p><em>Tidak ada data produk untuk bulan ini.</em></p>
+                                        @else
+                                            @foreach ($daftarProduk as $produk)
+                                                <div class="rata align-items-center job job-list-light mb-1 pb-1">
+                                                    <p class="text-xs m-0">{{ $loop->iteration }}. {{ $produk->nama }}</p>
+                                                    <div class="text-right">
+                                                        <h5 class="mb-0 font-weight-bold mr-3">{{ $produk->total_order }}</h5>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-3 pl-4">
-                                <div class="rata-tengah">
-                                    <div class="w-100">
-                                        <div class="rata job job-list-light mb-1 pb-2">
-                                            <div class="rata-kiri">
-                                                <div class="card-icon bg-orange mr-3">
-                                                    <i class="fas fa-cubes fa-2x"></i>
-                                                </div>
-                                                <div class="text-xs m-0">
-                                                    Produk<br> Dibuat
-                                                </div>
-                                            </div>
-                                            <h3 class="mb-0 font-weight-bold mr-3">355</h3>
+                                <div class="row no-gutters w-100">
+                                    <div class="col-12 mt-0 mb-2">
+                                        <h5 class="m-0 font-weight-bold">Jumlah Pesanan</h5>
+                                    </div>
+                                    <div class="col-3 rata-kiri" style="height: 100px">
+                                        <div class="card-icon bg-orange">
+                                            <i class="fas fa-truck fa-2x"></i>
                                         </div>
-                                        <div class="rata job job-list-light">
-                                            <div class="rata-kiri">
-                                                <div class="card-icon bg-danger mr-3">
-                                                    <i class="fas fa-list fa-2x"></i>
-                                                </div>
+                                    </div>
+                                    <div class="col-9 rata-kiri" style="height: 100px">
+                                        <div class="w-100">
+                                            <div class="rata job job-list-light mb-1 pb-2">
                                                 <div class="text-xs m-0">
-                                                    Order<br>Masuk
+                                                    Produk Dibuat
                                                 </div>
+                                                <h3 class="mb-0 font-weight-bold mr-3">{{ $listOrder->count() }}</h3>
                                             </div>
-                                            <h4 class="mb-0 font-weight-bold mr-3">252</h4>
+                                            <div class="rata job job-list-light">
+                                                <div class="text-xs m-0">
+                                                    Order Masuk
+                                                </div>
+                                                <h4 class="mb-0 font-weight-bold mr-3">{{ $jumlahOrderPerBulan[$bulan] ?? 0 }}</h4>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
